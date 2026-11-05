@@ -1,0 +1,72 @@
+
+# Jenkinsfile - Basic CI pipleline
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building project'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running Tests'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
+
+# Terraform - EC2 with Security Group
+
+resource ""aws_security_group" "example" {
+  name         = "example_security_group"
+  description  = "Allow SSH and HTTP"
+  ingress {
+    from_port    = 22
+    to_port      = 22
+    protocol     = "tcp"
+    cidr_blocks  = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+
+# Docker
+# Apache Container
+
+FROM ubuntu:22.04
+RUN apt update && apt install apache2 -y
+RUN echo "Hello Pathnex" > /var/www/html/index.html
+CMD ["apachectl:, "-D", "FOREGROUND"]
+
+# BAsh Real Path
+/var/www/html
+
+
+
+
+
+
+
+
+
+
+
+
+				
